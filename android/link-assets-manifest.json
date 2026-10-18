@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/BYekan.ttf",
+      "sha1": "0c40703b127e4cfeefd39587b24f19d0dc5ab4f7"
+    },
+    {
+      "path": "assets/fonts/BYekan+.ttf",
+      "sha1": "50919cf5c17afde12809e862cb1744c2ca2f24fd"
+    },
+    {
+      "path": "assets/fonts/IRANYekan-Bold.ttf",
+      "sha1": "cb4b52193d981157c7ff1b8174d76c5bf02fe36d"
+    },
+    {
+      "path": "assets/fonts/IRANYekan-ExtraBold.woff",
+      "sha1": "34f9d12ccabb1d5187bcaee50cb30abc91fef265"
+    },
+    {
+      "path": "assets/fonts/IRANYekan-Medium.otf",
+      "sha1": "9c77f43f0114c803ce114c9a17ee91313ab3982e"
+    },
+    {
+      "path": "assets/fonts/IRANYekan-Regular.eot",
+      "sha1": "a32fbfed521be424f02329dbdbfb222d9975c233"
+    },
+    {
+      "path": "assets/fonts/IRANYekan.woff2",
+      "sha1": "98ac1631926431e9952b5b4a4ac1d629c69d6051"
+    }
+  ]
+}
