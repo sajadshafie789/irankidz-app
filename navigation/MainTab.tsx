@@ -2,18 +2,18 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
-import type { RootTabParamList } from '../../hooks/Navigation/type';
-
-import HomeScreen from './home';
-import SearchScreen from './products';
-import FavoritesScreen from './favorite';
-import ProfileScreen from './profile';
-
-import { colors } from '../../utils/themes';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { RootTabParamList } from '../hooks/Navigation/type';
+import { colors } from '../utils/themes';
+import Home from '../screens/Main/home/main';
+import SearchScreen from '../screens/Main/products';
+import FavoritesScreen from '../screens/Main/favorite';
+import ProfileScreen from '../screens/Main/profile';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export default function MainTabNavigator() {
+  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -22,14 +22,14 @@ export default function MainTabNavigator() {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textSecondary,
         tabBarStyle: {
-          height: 65,
+          height: 60 + insets.bottom,
+          paddingBottom: Math.max(insets.bottom, 8),
           paddingTop: 8,
-          paddingBottom: 8,
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
         },
         tabBarLabelStyle: {
-          fontFamily: 'IRANYekan',
+          fontFamily: 'IRANYekan-Bold',
           fontSize: 11,
         },
         tabBarIcon: ({ color, size, focused }) => {
@@ -48,7 +48,7 @@ export default function MainTabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{ tabBarLabel: 'خانه' }}
       />
 

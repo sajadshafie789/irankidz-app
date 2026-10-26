@@ -1,11 +1,8 @@
-
 import { StyleSheet } from 'react-native';
-import { colors } from '../../../utils/themes';
 
 const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
-    backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
   },

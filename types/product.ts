@@ -54,3 +54,26 @@ export type ProductListResponse = {
   previous: string | null;
   results: Product[];
 };
+
+export type ProductOrderBy =
+  | 'createdAt'
+  | 'price'
+  | 'title'
+  | 'viewNum'
+  | 'favNum'
+  | 'shopNum'
+  | '';
+
+export type ProductSort = 'ASC' | 'DESC' | '';
+
+export interface ProductListParams {
+  locationId?: number | string;
+  justStockCount?: boolean | string;
+  notId?: number | undefined;
+  subCategoryId?: number[];
+  orderBy?: ProductOrderBy;
+  sort?: ProductSort;
+  start?: number;
+  limit?: number;
+  list?: string;
+}

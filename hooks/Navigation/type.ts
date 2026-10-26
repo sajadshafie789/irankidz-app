@@ -6,7 +6,10 @@ export type MainTabParamList = {
   CartTab: undefined;
   ProfileTab: undefined;
 };
-
+export type HomeStackParamList = {
+  HomeMain: undefined;
+  ProductDetails: { productId: number };
+};
 export type RootStackParamList = {
   Login: undefined;
   Register: undefined;
@@ -18,7 +21,7 @@ export type RootStackParamList = {
 };
 
 export type RootTabParamList = {
-  Home: undefined;
+  Home: NavigatorScreenParams<HomeStackParamList> | undefined;
   Search: undefined;
   Favorites: undefined;
   Profile: undefined;

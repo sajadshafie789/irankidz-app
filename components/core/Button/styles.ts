@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 import { colors } from '../../../utils/themes';
 
@@ -22,7 +21,7 @@ export const styles = StyleSheet.create({
   },
 
   secondary: {
-    backgroundColor: '#E5E7EB',
+    backgroundColor: colors.white,
   },
 
   outline: {

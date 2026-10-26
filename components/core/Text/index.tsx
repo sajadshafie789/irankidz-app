@@ -7,14 +7,14 @@ import type { GlobalTextProps } from './type';
 const GlobalText: React.FC<GlobalTextProps> = ({
   variant = 'body1',
   color = '#222222',
-  align = 'right',
+
   style,
   textStyle,
   children,
   ...textProps
 }) => {
   const variantStyle = typography[variant];
-
+  
   return (
     <Text
       {...textProps}
@@ -22,9 +22,9 @@ const GlobalText: React.FC<GlobalTextProps> = ({
         {
           fontSize: variantStyle.fontSize,
           lineHeight: variantStyle.lineHeight,
-          fontFamily: 'IRANYekan-Bold',
+          fontFamily: variantStyle.fontFamily,
           color,
-          textAlign: align,
+          textAlign: 'left',
           writingDirection: 'rtl',
         },
         style,

@@ -6,3 +6,5 @@ export { default as Select } from './Select';
 export { default as Text } from './Text';
 export { default as Image } from './Image';
 export { default as ProductCard } from './Card';
+export { default as SearchInput } from './SearchInput';
+export { default as Loading } from './Loading';

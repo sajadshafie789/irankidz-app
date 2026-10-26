@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   header: {
-    fontFamily: 'IRANYekan',
     fontSize: 22,
     color: colors.text,
     textAlign: 'right',
@@ -40,19 +39,19 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   title: {
-    fontFamily: 'IRANYekan',
+    fontFamily: 'IRANYekan-Bold',
     fontSize: 14,
     color: colors.text,
     textAlign: 'right',
   },
   price: {
-    fontFamily: 'IRANYekan',
+    // fontFamily: 'IRANYekan-Bold',
     fontSize: 14,
     color: colors.primary,
     marginTop: 8,
   },
   stock: {
-    fontFamily: 'IRANYekan',
+    fontFamily: 'IRANYekan-Bold',
     fontSize: 12,
     color: colors.textSecondary,
     marginTop: 4,
@@ -61,13 +60,13 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   error: {
-    fontFamily: 'IRANYekan',
+    fontFamily: 'IRANYekan-Bold',
     textAlign: 'center',
     color: colors.error,
     padding: 16,
   },
   empty: {
-    fontFamily: 'IRANYekan',
+    fontFamily: 'IRANYekan-Bold',
     textAlign: 'center',
     color: colors.textSecondary,
     padding: 20,

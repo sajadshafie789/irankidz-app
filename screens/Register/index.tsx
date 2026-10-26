@@ -8,19 +8,22 @@ import { colors } from '../../utils/themes';
 import styles from './styles';
 import AuthLayout from '../../components/layouts/auth';
 import API_ROUTES from '../../Api/api';
+import { showToast } from '../../utils/toast';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const navigation = useAppNavigation();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [phone, setPhone] = useState<string>('');
 
   const [phoneError, setPhoneError] = useState<string>('');
-
-  const HandleLoginApi = () => {
+  
+  const HandleCodeAPI = () => {
+    console.log('object');
     setIsLoading(true);
-    API_ROUTES.sendCode()
+    API_ROUTES.sendCode({ mobile: phone })
       .then(res => {
         console.log(res);
+        showToast('success', res.data.message);
         setIsLoading(false);
       })
       .catch(err => {
@@ -29,7 +32,7 @@ const LoginScreen = () => {
       });
   };
 
-  const handleLogin = () => {
+  const handlegetCode = () => {
     setPhoneError('');
 
     let isValid = true;
@@ -40,7 +43,7 @@ const LoginScreen = () => {
     }
 
     if (!isValid) return;
-    HandleLoginApi();
+    HandleCodeAPI();
   };
 
   return (
@@ -62,7 +65,7 @@ const LoginScreen = () => {
 
         <Button
           title="دریافت کد"
-          onPress={handleLogin}
+          onPress={handlegetCode}
           fullWidth
           buttonStyle={styles.loginButton}
           loading={isLoading}
@@ -86,4 +89,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;

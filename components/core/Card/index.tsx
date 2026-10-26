@@ -25,15 +25,7 @@ export default function ProductCard({
         <Text style={styles.title} numberOfLines={2} variant="body2">
           {product.title}
         </Text>
-        {/* <Text
-          style={{
-            fontFamily: 'BYekan',
-            fontSize:18,
-            fontWeight:500
-          }}
-        >
-          {product.title}
-        </Text> */}
+
 
         <Text style={styles.price}>
           {product.price.toLocaleString('fa-IR')} تومان

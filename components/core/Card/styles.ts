@@ -5,9 +5,10 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row-reverse',
     alignItems: 'center',
-    backgroundColor: colors.surface,
+    // backgroundColor: 'red',
     borderRadius: 14,
     padding: 12,
+
     marginBottom: 12,
     borderWidth: 1,
     borderColor: colors.border,
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
   info: {
     flex: 1,
     alignItems: 'flex-end',
-    marginRight: 12,
   },
   title: {
     width: '100%',
@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   price: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 12,
     color: colors.primary,
     marginTop: 8,
     textAlign: 'right',
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
   addButton: {
     alignSelf: 'stretch',
     minHeight: 38,
-    paddingHorizontal: 12,
+    // paddingHorizontal: 12,
     marginTop: 10,
     borderRadius: 8,
     backgroundColor: colors.primary,
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   buttonText: {
-    fontFamily: 'IRANYekan',
+    fontFamily: 'IRANYekan-Bold',
     fontSize: 12,
     color: colors.white,
   },

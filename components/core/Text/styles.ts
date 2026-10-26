@@ -28,7 +28,7 @@ export const typography = {
   h5: {
     fontSize: 18,
     lineHeight: 28,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
     fontFamily: fonts.medium,
   },
   h6: {

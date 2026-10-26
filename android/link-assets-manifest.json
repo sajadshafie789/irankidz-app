@@ -28,6 +28,18 @@
     {
       "path": "assets/fonts/IRANYekan.woff2",
       "sha1": "98ac1631926431e9952b5b4a4ac1d629c69d6051"
+    },
+    {
+      "path": "assets/fonts/iranyekanwebboldfanum.ttf",
+      "sha1": "51c4bcaf45aa32af0bdea2a0db2d58c8b4bcf008"
+    },
+    {
+      "path": "assets/fonts/iranyekanwebextraboldfanum.ttf",
+      "sha1": "36696f2d8b5fc19083986647a0301b735ae439ee"
+    },
+    {
+      "path": "assets/fonts/iranyekanwebregularfanum.ttf",
+      "sha1": "7d18a379461dc1628b889d13f9d7bf58dd4411b4"
     }
   ]
 }

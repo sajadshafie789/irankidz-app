@@ -1,16 +1,10 @@
-
 import React from 'react';
-import {
-  ActivityIndicator,
-  Pressable,
-  Text,
-} from 'react-native';
+import { ActivityIndicator, Pressable } from 'react-native';
 
 import { styles } from './styles';
 import { ButtonProps } from './type';
 import { colors } from '../../../utils/themes';
-
-
+import { Text } from '..';
 
 const GlobalButton: React.FC<ButtonProps> = ({
   title,
@@ -50,13 +44,7 @@ const GlobalButton: React.FC<ButtonProps> = ({
           size="small"
         />
       ) : (
-        <Text
-          style={[
-            styles.text,
-            styles[`${variant}Text`],
-            textStyle,
-          ]}
-        >
+        <Text style={[styles.text, styles[`${variant}Text`], textStyle]}>
           {title}
         </Text>
       )}

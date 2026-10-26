@@ -23,6 +23,7 @@ const LoginScreen = () => {
     setIsLoading(true);
     API_ROUTES.login({ username: phone, password: password })
       .then(async res => {
+
         setIsLoading(false);
         const token: string = res.data.response.accessToken;
         await AsyncStorage.setItem('access_token', token);
@@ -30,7 +31,7 @@ const LoginScreen = () => {
       })
       .catch(err => {
         setIsLoading(false);
-        console.log(err.response);
+        console.log(err);
       });
   };
 

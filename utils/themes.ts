@@ -19,10 +19,10 @@ export const colors = {
 } as const;
 
 export const fonts = {
-  regular: 'IRANYekan-Regular',
-  medium: 'IRANYekan-Medium',
-  bold: 'IRANYekan-Bold',
-  extraBold: 'IRANYekan-ExtraBold',
+  regular: 'iranyekanwebregularfanum',
+  medium: 'iranyekanwebregularfanum',
+  bold: 'iranyekanwebboldfanum',
+  extraBold: 'iranyekanwebextraboldfanum',
 } as const;
 
 export type FontFamily = keyof typeof fonts;

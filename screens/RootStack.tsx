@@ -4,10 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import type { RootStackParamList } from '../hooks/Navigation/type';
 
-import TabNavigator from './Main';
 import LoginScreen from './Login';
 import RegisterScreen from './Register';
 import { useAppContext } from '../context/Appprovider';
+import MainTabNavigator from '../navigation/MainTab';
 
 // type RootNavigatorProps = {
 //   isAuthenticated: boolean;
@@ -28,7 +28,7 @@ const RootNavigator = () => {
           <>
             <Stack.Screen
               name="Main"
-              component={TabNavigator}
+              component={MainTabNavigator}
               options={{ headerShown: false }}
             />
           </>
