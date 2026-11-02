@@ -31,7 +31,7 @@ export default function Games({}: Props) {
   useEffect(() => {
     getList();
   }, []);
-  console.log(list);
+
   return (
     <View style={{ marginTop: 60 }}>
       <Text variant="h3"> کنسول بازی</Text>

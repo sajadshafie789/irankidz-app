@@ -22,7 +22,7 @@ export default function Categories({}: Props) {
   useEffect(() => {
     CategoryAPI();
   }, []);
-  console.log(data);
+
   return (
     <FlatList
       data={data}

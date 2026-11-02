@@ -1,15 +1,8 @@
-
 import React from 'react';
-import {
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 
 import { styles } from './styles';
 import { InputProps } from './type';
-
-
 
 const GlobalInput: React.FC<InputProps> = ({
   label,
@@ -20,23 +13,16 @@ const GlobalInput: React.FC<InputProps> = ({
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
-      {label ? (
-        <Text style={styles.label}>{label}</Text>
-      ) : null}
+      {label ? <Text style={styles.label}>{label}</Text> : null}
 
       <TextInput
+        textAlign="right"
         {...inputProps}
-        style={[
-          styles.input,
-          error ? styles.inputError : undefined,
-          style,
-        ]}
+        style={[styles.input, error ? styles.inputError : undefined, style]}
         placeholderTextColor="#9CA3AF"
       />
 
-      {error ? (
-        <Text style={styles.errorText}>{error}</Text>
-      ) : null}
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
     </View>
   );
 };

@@ -21,7 +21,6 @@ export default function ImagesBox({}: Props) {
         resizeMode="cover"
         width={'100%'}
         height={200}
-        style={{ backgroundColor: 'red' }}
       />
       <FlatList
         data={images}

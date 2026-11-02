@@ -1,9 +1,10 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, Pressable, View } from 'react-native';
 import { Product } from '../../../types/product';
 import { styles } from './styles';
 import { Button, Image, Loading, Text } from '../../core';
 import { BASE_IMG } from '../../../Api/config';
+import { useAppNavigation } from '../../../hooks/Navigation/useAppNavigation';
 
 type Props = {
   list: Product[];
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export default function List({ list, type, isLoading }: Props) {
+  const navigation = useAppNavigation();
   return (
     <View>
       {isLoading ? (
@@ -34,7 +36,15 @@ export default function List({ list, type, isLoading }: Props) {
           renderItem={({ item }) => {
             if (type === 'outline') {
               return (
-                <View style={styles.containerCard}>
+                <Pressable
+                  style={styles.containerCard}
+                  onPress={() => {
+                    navigation.navigate('ProductDetails', {
+                      productId: String(item.id),
+                      link: item.link,
+                    });
+                  }}
+                >
                   <Image
                     source={{ uri: BASE_IMG + item.fileImage.name }}
                     width={150}
@@ -46,11 +56,19 @@ export default function List({ list, type, isLoading }: Props) {
                     {item.price.toLocaleString('fa-IR')} تومان
                   </Text>
                   <Button title="افزودن به سبد خرید" variant="outline" />
-                </View>
+                </Pressable>
               );
             } else {
               return (
-                <View style={styles.containerCard}>
+                <Pressable
+                  style={styles.containerCard}
+                  onPress={() => {
+                    navigation.navigate('ProductDetails', {
+                      productId: String(item.id),
+                      link: item.link,
+                    });
+                  }}
+                >
                   <Image
                     source={{ uri: BASE_IMG + item.fileImage.name }}
                     width={150}
@@ -62,7 +80,7 @@ export default function List({ list, type, isLoading }: Props) {
                     {item.price.toLocaleString('fa-IR')} تومان
                   </Text>
                   <Button title="افزودن به سبد خرید" variant="primary" />
-                </View>
+                </Pressable>
               );
             }
           }}

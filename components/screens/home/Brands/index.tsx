@@ -25,7 +25,7 @@ export default function BrandList({}: Props) {
   useEffect(() => {
     getList();
   }, []);
-  console.log(list);
+  
   return (
     <View style={{ marginTop: 60 }}>
       <Text variant="h3"> برند های معروف</Text>

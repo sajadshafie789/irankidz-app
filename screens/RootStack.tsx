@@ -9,10 +9,6 @@ import RegisterScreen from './Register';
 import { useAppContext } from '../context/Appprovider';
 import MainTabNavigator from '../navigation/MainTab';
 
-// type RootNavigatorProps = {
-//   isAuthenticated: boolean;
-// };
-
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const RootNavigator = () => {
   const { isAuth } = useAppContext();

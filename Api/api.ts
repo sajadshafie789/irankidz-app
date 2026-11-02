@@ -23,8 +23,17 @@ const API_ROUTES = {
         orderBy ? `&orderBy=${orderBy}` : ''
       }${sort ? `&sort=${sort}` : ''}`,
     ),
+  ProductDetail: (slug?: string, id?: string) => {
+    return Config.get(`product/list?slug=${slug}&id=${id}`);
+  },
+  UserFav: (id: string) => Config.get(`users/product/favorite/${id}`),
   categoryList: () => Config.get('category/list'),
   BrandList: () => Config.get('brand/list'),
+  ProductRate: (id: string) => Config.get(`product/rate/list?productId=${id}`),
+  GetComment: (id: string) => Config.get(`product/rate/list?productId=${id}`),
+  FavoriteList: () => Config.get(`users/favorite/list/`),
+  SendComment: (id: string, data: any) =>
+    Config.post(`users/product/rate/${id}`, data),
 };
 
 export default API_ROUTES;

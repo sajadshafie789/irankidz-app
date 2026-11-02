@@ -15,6 +15,8 @@ import { BASE_IMG } from '../../../Api/config';
 import { ProductCard, Text } from '../../../components/core';
 
 import { showToast } from '../../../utils/toast';
+import HeaderProduct from '../../../components/shared/HeaderProduct';
+import HomeHeader from '../../../components/layouts/header';
 
 const PAGE_SIZE = 10;
 
@@ -26,7 +28,6 @@ export default function ProductListScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
 
-  // جلوگیری از درخواست تکراری برای یک صفحه
   const requestingRef = useRef(false);
 
   const fetchProducts = useCallback(
@@ -39,26 +40,28 @@ export default function ProductListScreen() {
       setError('');
 
       try {
-        const response = await API_ROUTES.productList(pageNumber, PAGE_SIZE);
-        // const response = await axios.get<ProductListResponse>(API_URL, {
-        //   params: {
-        //     page: pageNumber,
-        //     page_size: PAGE_SIZE,
-        //   },
-        // });
-        console.log(response);
-        const newProducts = response.data.response;
+        const response = await API_ROUTES.productList({
+          start: (pageNumber - 1) * PAGE_SIZE,
+          limit: PAGE_SIZE,
+          justStockCount: '',
+          locationId: '',
+          orderBy: '',
+          notId: 0,
+          sort: '',
+        });
 
-        setProducts(previous =>
-          refresh || pageNumber === 1
+        const newProducts = response.data.response;
+        setProducts(previous => {
+          const existingIds = new Set(previous.map(product => product.id));
+
+          const uniqueProducts = newProducts.filter(
+            product => !existingIds.has(product.id),
+          );
+
+          return refresh || pageNumber === 1
             ? newProducts
-            : [
-                ...previous,
-                ...newProducts.filter(
-                  item => !previous.some(product => product.id === item.id),
-                ),
-              ],
-        );
+            : [...previous, ...uniqueProducts];
+        });
 
         setPage(pageNumber);
 
@@ -68,16 +71,7 @@ export default function ProductListScreen() {
             : newProducts.length === PAGE_SIZE,
         );
       } catch (err: unknown) {
-        console.log(
-          'Products API error:',
-          axios.isAxiosError(err)
-            ? {
-                status: err.response?.status,
-                data: err.response?.data,
-                message: err.message,
-              }
-            : err,
-        );
+        console.log(err);
 
         setError('دریافت محصولات با خطا مواجه شد.');
       } finally {
@@ -118,11 +112,13 @@ export default function ProductListScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{ alignItems: 'center', marginTop: 16 }}>
-        <Text style={styles.header} variant="subtitle1">
-          محصولات
-        </Text>
+      <View style={{ paddingHorizontal: 8 }}>
+        <HomeHeader />
       </View>
+      <HeaderProduct
+        title="لیست محصولات ایران کیدز"
+        secendTitle="فروشگاه ایران کیدز"
+      />
 
       <FlatList
         data={products}
@@ -130,6 +126,7 @@ export default function ProductListScreen() {
         renderItem={renderProduct}
         onEndReached={loadMore}
         onEndReachedThreshold={0.4}
+        style={{ marginTop: 16 }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }

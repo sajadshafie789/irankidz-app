@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, Pressable, View } from 'react-native';
 
 import { Button, Image, Text } from '../../../core';
 import { Product } from '../../../../types/product';
 import API_ROUTES from '../../../../Api/api';
 import styles from './styles';
 import { BASE_IMG } from '../../../../Api/config';
+import { useAppNavigation } from '../../../../hooks/Navigation/useAppNavigation';
 
 type Props = {};
 
 export default function BestSeller({}: Props) {
   const [list, setList] = useState<Product[]>([]);
-
+  const navigation = useAppNavigation();
   const getList = async () => {
     const response = await API_ROUTES.productList({
       orderBy: 'viewNum',
@@ -36,7 +37,15 @@ export default function BestSeller({}: Props) {
           contentContainerStyle={styles.listContainer}
           renderItem={({ item }) => {
             return (
-              <View style={styles.cardContainer}>
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('ProductDetails', {
+                    productId: String(item.id),
+                    link: item.link,
+                  });
+                }}
+                style={styles.cardContainer}
+              >
                 <Image
                   source={{ uri: BASE_IMG + item.fileImage.name }}
                   height={125}
@@ -55,7 +64,7 @@ export default function BestSeller({}: Props) {
                     paddingHorizontal: 8,
                   }}
                 />
-              </View>
+              </Pressable>
             );
           }}
         />

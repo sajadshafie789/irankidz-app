@@ -9,15 +9,11 @@ export type ProductStock = {
   productId: number;
   attributeId: number;
   subAttributeId: number;
+  subAttribute: { faName: string; enName: string };
   count: number;
   countBuy: number | null;
 
   // فیلدهای احتمالی دیگر API را اینجا اضافه کن
-};
-
-export type ProductAttribute = {
-  // برای تعریف دقیق، نمونه کامل productAttribute لازم است.
-  [key: string]: unknown;
 };
 
 export type Product = {
@@ -76,4 +72,39 @@ export interface ProductListParams {
   start?: number;
   limit?: number;
   list?: string;
+  productID?: string | number;
+  slug?: string;
 }
+
+export interface ProductCommentProps {
+  comment: string;
+  createdAt: string;
+  id: number;
+  product: {
+    title: string;
+    subtitle: string;
+    id: number;
+    rate: string;
+    fileImage: {
+      // فیلدهای دقیق fileImage رو بعداً اضافه کن
+      [key: string]: unknown;
+    };
+  };
+  productId: number;
+  rate: number;
+  rateImages: unknown[];
+  strengthsPoints: string;
+  title: string;
+  weakPoints: string;
+}
+
+export type ProductAttribute = {
+  attribute: {
+    faName: string;
+  };
+  attributeId: number;
+  subAttribute: {
+    faName: string;
+  };
+  subAttributeId: number;
+};

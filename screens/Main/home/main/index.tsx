@@ -25,7 +25,6 @@ const Home: React.FC = ({}) => {
       keyExtractor={(_, index) => String(index)}
       ListHeaderComponent={
         <View style={{ paddingHorizontal: 8 }}>
-          <HomeHeader />
           <ImagesBox />
           <Option />
           <Categories />

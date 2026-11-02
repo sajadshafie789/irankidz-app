@@ -8,3 +8,7 @@ export { default as Image } from './Image';
 export { default as ProductCard } from './Card';
 export { default as SearchInput } from './SearchInput';
 export { default as Loading } from './Loading';
+export { default as Counter } from './Counter';
+export { default as Radio } from './Radio';
+export { default as Tabs } from './Tabs';
+export { default as StarRating } from './StarRating';

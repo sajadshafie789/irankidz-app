@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, Pressable, View } from 'react-native';
 import { Button, Image, Text } from '../../../core';
 import { Product } from '../../../../types/product';
 import API_ROUTES from '../../../../Api/api';
 import { BASE_IMG } from '../../../../Api/config';
 import { styles } from './styles';
+import { useAppNavigation } from '../../../../hooks/Navigation/useAppNavigation';
 
 type Props = {};
 
 export default function ProductNewest({}: Props) {
+  const navigation = useAppNavigation();
   const [data, setData] = useState<Product[]>([]);
   const getData = async () => {
     const response = await API_ROUTES.productList({
@@ -27,7 +29,7 @@ export default function ProductNewest({}: Props) {
   useEffect(() => {
     getData();
   }, []);
-  console.log(data);
+
   return (
     <View style={{ marginTop: 60 }}>
       <View
@@ -49,7 +51,15 @@ export default function ProductNewest({}: Props) {
         contentContainerStyle={styles.listContainer}
         renderItem={({ item }) => {
           return (
-            <View style={styles.containerCard}>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('ProductDetails', {
+                  productId: String(item.id),
+                  link: item.link,
+                });
+              }}
+              style={styles.containerCard}
+            >
               <Image
                 source={{ uri: BASE_IMG + item.fileImage.name }}
                 width={150}
@@ -61,7 +71,7 @@ export default function ProductNewest({}: Props) {
                 {item.price.toLocaleString('fa-IR')} تومان
               </Text>
               <Button title="افزودن به سبد خرید" variant="primary" />
-            </View>
+            </Pressable>
           );
         }}
       />

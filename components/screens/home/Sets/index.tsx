@@ -16,7 +16,6 @@ export default function Sets({}: Props) {
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const getList = async (id: number[]) => {
-    console.log('############');
     setLoading(true);
     const response = await API_ROUTES.productList({
       subCategoryId: id,
@@ -31,7 +30,7 @@ export default function Sets({}: Props) {
   useEffect(() => {
     getList([22, 24]);
   }, []);
-  console.log(list);
+
   return (
     <View style={{ marginTop: 60 }}>
       <Text variant="h3">ست ها</Text>

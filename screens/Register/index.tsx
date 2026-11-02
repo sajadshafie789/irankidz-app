@@ -16,13 +16,11 @@ const RegisterScreen = () => {
   const [phone, setPhone] = useState<string>('');
 
   const [phoneError, setPhoneError] = useState<string>('');
-  
+
   const HandleCodeAPI = () => {
-    console.log('object');
     setIsLoading(true);
     API_ROUTES.sendCode({ mobile: phone })
       .then(res => {
-        console.log(res);
         showToast('success', res.data.message);
         setIsLoading(false);
       })

@@ -8,7 +8,7 @@ import { colors } from '../../../utils/themes';
 import LogoImage from '../../shared/LogoImage';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { useAppNavigation } from '../../../hooks/Navigation/useAppNavigation';
-import { DrawerActions } from '@react-navigation/native';
+
 
 type HomeHeaderProps = {
   onSearch?: (value: string) => void;
@@ -21,19 +21,19 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({
   onCartPress,
   cartCount = 0,
 }) => {
-  const [search, setSearch] = React.useState('');
   const navigation = useAppNavigation();
   return (
     <SafeAreaView edges={['top']} style={styles.safeArea}>
       <View style={styles.container}>
         {/* Logo and actions */}
 
-        <View style={styles.logo}>
+        <Pressable
+          style={styles.logo}
+          onPress={() => navigation.navigate('Home')}
+        >
           <LogoImage width={50} height={50} />
-        </View>
-        <View style={{ width: '60%' }}>
-          <SearchInput value="" onChangeText={e => console.log(e)} />
-        </View>
+        </Pressable>
+        <View style={{ width: '60%' }}></View>
         <Pressable
           onPress={onCartPress}
           style={styles.iconButton}
@@ -51,7 +51,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({
         </Pressable>
         <Pressable
           onPress={() => {
-            navigation.dispatch(DrawerActions.openDrawer());
+            console.log('object');
           }}
         >
           <Ionicons name="menu" size={26} />
