@@ -25,7 +25,14 @@ export default function FavCard({
         <Text variant="subtitle2">موجود</Text>
       </View>
       <View style={styles.footerCard}>
-        <Text variant="subtitle2">{title}</Text>
+        <Text
+          variant="subtitle2"
+          style={{ flex: 1 }}
+          numberOfLines={2}
+          ellipsizeMode="tail"
+        >
+          {title}
+        </Text>
         <Button
           onPress={onAction}
           variant="outline"

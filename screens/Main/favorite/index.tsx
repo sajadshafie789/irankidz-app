@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { Text } from '../../../components/core';
-import { Product } from '../../../types/product';
+
 import API_ROUTES from '../../../Api/api';
 import { FavProductProps, processStateProps } from '../../../types/types';
 import ProcessLayoutData from '../../../components/core/ProcessLoading';
@@ -16,15 +16,18 @@ type Props = {};
 export default function Facorite({}: Props) {
   const [data, setData] = useState<FavProductProps[]>([]);
   const [processMode, setProcessMode] = useState<processStateProps>('loading');
-  const [loadingButton, setLoadingButton] = useState<boolean>(false);
+
   const getData = () => {
     setProcessMode('loading');
     API_ROUTES.FavoriteList()
       .then(res => {
+        const result = res.data.response.map((v: any) => {
+          return { ...v, loading: false };
+        });
         res.data.response.length >= 0
           ? setProcessMode('data')
           : setProcessMode('empty');
-        setData(res.data.response);
+        setData(result);
       })
       .catch(err => {
         setProcessMode('error');
@@ -32,11 +35,14 @@ export default function Facorite({}: Props) {
       });
   };
   const onCancelFav = (id: number) => {
-    setLoadingButton(true);
+    const updateData = data.map(v => {
+      return { ...v, loading: id === v.id };
+    });
+    setData(updateData);
     API_ROUTES.UserFav(String(id))
       .then(() => {
         showToast('success', 'محصول از لیست علاقه مندی حدف شد');
-        setLoadingButton(false);
+
         getData();
       })
       .catch(err => {
@@ -48,7 +54,9 @@ export default function Facorite({}: Props) {
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.white }}>
+    <View
+      style={{ flex: 1, backgroundColor: colors.white, paddingBottom: 120 }}
+    >
       <View style={{ paddingHorizontal: 8 }}>
         <HomeHeader />
       </View>
@@ -90,7 +98,7 @@ export default function Facorite({}: Props) {
                 }}
               >
                 <FavCard
-                  loadingButton={loadingButton}
+                  loadingButton={item.loading}
                   onAction={() => onCancelFav(item.id)}
                   image={item.product.fileImage.name}
                   price={item.product.price}
